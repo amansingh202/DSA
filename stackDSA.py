@@ -31,3 +31,41 @@ print(stack)
 
 print(stack.pop())
 print(stack)
+
+
+#Stack class
+class Stack:
+    def __init__(self):
+        self.container = deque()
+
+    def push(self,val):
+        self.container.append(val)
+
+    def pop(self):
+        return self.container.pop()
+    
+    def peek(self):
+        return self.container[-1]
+    
+    def is_empty(self):
+        return len(self.container) == 0
+    
+    def size(self):
+        return len(self.container)
+    
+
+
+st = Stack()
+st.push(5)
+st.push(67)
+st.push(77)
+
+print(st.peek())
+
+print(st.pop())
+
+print(st.peek())
+
+print(st.is_empty())
+
+print(st.size())
