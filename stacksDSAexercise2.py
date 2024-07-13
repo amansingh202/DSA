@@ -49,7 +49,7 @@ def is_balanced(s):
 
     return stack.size()==0
 
-
+#test cases
 if __name__ == '__main__':
     print(is_balanced("({a+b})"))
     print(is_balanced("))((a+b}{"))
