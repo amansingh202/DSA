@@ -2,4 +2,4 @@ Contains DSA codes
 
 Git setup as well
 
-DSA patterns setup
+DSA patterns setup in this repo
