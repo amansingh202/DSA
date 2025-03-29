@@ -69,12 +69,6 @@ class Solution:
             r += 1
 
         return max_len
-    
-    
-    
-    
-    
-
 
     
 obj = Solution()
@@ -83,3 +77,5 @@ s = "AABABBA"
 k = 1
 
 print(obj.characterReplacement_mostOptimal(s, k))
+
+#1
