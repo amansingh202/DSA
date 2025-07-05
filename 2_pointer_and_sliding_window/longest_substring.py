@@ -26,4 +26,4 @@ s = "abcabcbb"
 
 print(obj.lengthOfLongestSubstring(s))
 
-# 02, 03, 05
+# 03, 05
