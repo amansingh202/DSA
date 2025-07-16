@@ -47,3 +47,5 @@ for i in range(3, 12):
 print(obj.pop())
 
 print(obj.top())
+
+print(obj.empty())
