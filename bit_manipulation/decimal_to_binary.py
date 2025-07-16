@@ -9,8 +9,9 @@ def dec_2_binary(n):
 
         n //= 2
 
-    reversed(result)
+    result = result[::-1]
     return result
 
 
-print(dec_2_binary(1))
+
+print(dec_2_binary(13))
