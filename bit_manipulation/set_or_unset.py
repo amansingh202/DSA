@@ -14,7 +14,7 @@ def dec2bin(n):
     return result
 
 binary = dec2bin(13)
-print(binary)
+#print(binary)
 
 def set_or_notSet(binary, index):
     n = len(binary)
@@ -26,4 +26,17 @@ def set_or_notSet(binary, index):
     else:
         return False
 
-print(set_or_notSet(binary, 2))
+#print(set_or_notSet(binary, 2))
+
+
+## set or unset using left shift operator
+
+def left_shift_set_or_unset(n, index):
+    new_val = 1 << index
+
+    if n & new_val != 0:
+        return True
+    return False
+
+print(left_shift_set_or_unset(13, 3))
+
