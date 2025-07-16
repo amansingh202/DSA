@@ -29,7 +29,7 @@ def set_or_notSet(binary, index):
 #print(set_or_notSet(binary, 2))
 
 
-## set or unset using left shift operator
+## set or unset using right shift operator 
 
 def left_shift_set_or_unset(n, index):
     new_val = 1 << index
