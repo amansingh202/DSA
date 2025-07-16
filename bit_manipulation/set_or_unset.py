@@ -29,7 +29,7 @@ def set_or_notSet(binary, index):
 #print(set_or_notSet(binary, 2))
 
 
-## set or unset using right shift operator 
+## set or unset using left shift operator 
 
 def left_shift_set_or_unset(n, index):
     new_val = 1 << index
@@ -38,5 +38,12 @@ def left_shift_set_or_unset(n, index):
         return True
     return False
 
-print(left_shift_set_or_unset(13, 3))
+# print(left_shift_set_or_unset(13, 3))
+
+def toggle_right_most_shift(n):
+    result = n & (n-1)
+
+    return result
+
+print(toggle_right_most_shift(15))
 
