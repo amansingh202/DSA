@@ -1,10 +1,11 @@
 class Node:
-    def __init__(self, key, value, freq):
+    def __init__(self, key, value):
         self.key = key
         self.value = value
-        self.freq = 1
+        self.freq = 1  # Always start with frequency 1
         self.next = None
         self.prev = None
+
 
 
 class DoublyLinkedList:
@@ -50,7 +51,7 @@ class LFUCache:
 
         node = self.key_table[key]
         self._update_freq(node)
-        return node.val
+        return node.value
 
     def put(self, key: int, value: int) -> None:
         if self.capacity == 0:
@@ -58,7 +59,7 @@ class LFUCache:
 
         if key in self.key_table:
             node = self.key_table[key]
-            node.val = value
+            node.value = value
             self._update_freq(node)
         else:
             if len(self.key_table) >= self.capacity:
@@ -88,3 +89,20 @@ class LFUCache:
             self.freq_table[node.freq] = DoublyLinkedList()
         self.freq_table[node.freq].insert_at_head(node)
 
+
+lfu = LFUCache(2)
+lfu.put(1, 1)#;   // cache=[1,_], cnt(1)=1
+lfu.put(2, 2)#;   // cache=[2,1], cnt(2)=1, cnt(1)=1
+print(lfu.get(1))#;      // return 1
+              #   // cache=[1,2], cnt(2)=1, cnt(1)=2
+lfu.put(3, 3)#;   // 2 is the LFU key because cnt(2)=1 is the smallest, invalidate 2.
+               #  // cache=[3,1], cnt(3)=1, cnt(1)=2
+print(lfu.get(2))#;      // return -1 (not found)
+print(lfu.get(3))#;      // return 3
+             #    // cache=[3,1], cnt(3)=2, cnt(1)=2
+lfu.put(4, 4)#;   // Both 1 and 3 have the same cnt, but 1 is LRU, invalidate 1.
+            #     // cache=[4,3], cnt(4)=1, cnt(3)=2
+print(lfu.get(1))#;      // return -1 (not found)
+print(lfu.get(3))#;      // return 3
+           #      // cache=[3,4], cnt(4)=1, cnt(3)=3
+print(lfu.get(4))#;  
