@@ -41,4 +41,32 @@ def two_pointer_subarray(arr, k):
 
 k = 14
 
-print(two_pointer_subarray(arr, k))
+#print(two_pointer_subarray(arr, k))
+
+
+#
+# Most optimized code:-
+
+def two_pointer_subarray_optimized(arr, k):
+    n = len(arr)
+    l = 0
+    r = 0
+    max_sum = 0
+    max_len = 0
+
+    while (r < n):
+        max_sum += arr[r]
+
+        if max_sum > k:
+            max_sum -= arr[l]
+            l += 1
+        
+        if max_sum < k:
+            max_len = max(max_len, r - l + 1)
+        
+        r += 1
+    return max_len
+
+k = 14
+
+print(two_pointer_subarray_optimized(arr, k))
