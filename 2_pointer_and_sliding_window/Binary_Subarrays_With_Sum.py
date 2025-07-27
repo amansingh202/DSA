@@ -15,11 +15,33 @@ class Solution:
 
         return count
     
+    def numSubarraysWithSum_optimal(self, nums: list[int], goal: int) -> int:
+        if goal < 0:
+            return 0
+        
+        l = 0
+        r = 0
+        sum = 0
+        count = 0
+        n  = len(nums)
+
+        while r < n:
+            sum += nums[r]
+
+            while sum > goal:
+                sum = sum - nums[l]
+                l = l + 1
+            count += (r - l + 1)
+
+            r += 1
+        return count
+
+    
 obj = Solution()
 
 nums = [0,0,0,0,0]
 goal = 0
 
-print(obj.numSubarraysWithSum(nums, goal))
+print(obj.numSubarraysWithSum_optimal(nums, goal))
 
         
