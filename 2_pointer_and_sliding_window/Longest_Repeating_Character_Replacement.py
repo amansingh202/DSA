@@ -21,6 +21,8 @@ class Solution:
 
         return max_len
     
+    ## better approach
+    
     def characterReplacement_better(self, s: str, k: int) -> int:
         n = len(s)
         max_len = 0
@@ -43,6 +45,8 @@ class Solution:
 
         return max_len
     
+    ## most optimal approach
+
     def characterReplacement_mostOptimal(self, s: str, k: int) -> int:
         n = len(s)
         max_len = 0
@@ -65,6 +69,10 @@ class Solution:
             r += 1
 
         return max_len
+    
+    
+    
+    
     
 
 
