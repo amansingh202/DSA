@@ -1,5 +1,7 @@
 ## leetcode 992. Subarrays with K Different Integers
 
+
+## brute force approach
 class Solution:
     def subarraysWithKDistinct(self, nums: list[int], k: int) -> int:
 
@@ -19,11 +21,41 @@ class Solution:
                         break
 
         return count
+    
+### most optimal approach
+    def subarraysWithKDistinct_mostOptimal(self, nums: list[int], k: int) -> int:
+        def at_most(k):
+            n = len(nums)
+            l = 0
+            r = 0
+            seen = {}
+            count = 0
+
+            while r < n:
+                seen[nums[r]] = seen.get(nums[r], 0) + 1
+
+                while len(seen) > k:
+                    seen[nums[l]] -= 1
+
+                    if seen[nums[l]] == 0:
+                        del seen[nums[l]]
+
+                    l = l + 1
+
+                count = count + (r - l + 1)
+
+                r += 1
+
+            return count
+
+        return at_most(k) - at_most(k - 1)
+
+        
 
 
 obj = Solution()
-nums = [1,2,1,3,4]
-k = 3
+nums = [1,2,1,2,3]
+k = 2
 
-print(obj.subarraysWithKDistinct(nums, k))
+print(obj.subarraysWithKDistinct_mostOptimal(nums, k))
         
