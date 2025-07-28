@@ -39,13 +39,18 @@ class Solution:
         
 
     def getMin(self):
+        return self.heap[0]
         
 
     def heapSize(self):
         return len(self.heap)
 
     def heapify_up(self,i):
-        pass
+        parent = (i - 1)//2
+        while i > 0 and self.heap[i] < self.heap[parent]:
+            self.heap[i], self.heap[parent] = self.heap[parent], self.heap[i]
+            i = parent
+            parent = (i - 1)//2
 
     def heapify_down(self, i):
         pass
