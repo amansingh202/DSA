@@ -78,6 +78,22 @@ heap.initializeHeap()
 
 heap.insert(4)
 heap.insert(1)
-heap.insert(10)
+
+print(heap.extractMin())
+print(heap.getMin())
+
+heap.insert(1)
+print(heap.heapSize())
+
+print(heap.isEmpty())
+
+print(heap.extractMin())
+
+heap.changeKey(0,2)
+
+print(heap.heapSize())
 
 print(heap.getMin())
+
+
+
