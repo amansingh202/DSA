@@ -6,7 +6,7 @@ class Solution:
 
     def insert(self, key):
         self.heap.append(key)
-        self.heap.heapify_up(len(self.heap) - 1)
+        self.heapify_up(len(self.heap) - 1)
         
 
     def changeKey(self, index, new_val):
@@ -53,5 +53,31 @@ class Solution:
             parent = (i - 1)//2
 
     def heapify_down(self, i):
-        pass
-        
+        size = len(self.heap)
+
+        while True:
+            smallest = i
+            left_child = 2*i + 1
+            right_child = 2*i + 2
+
+            if left_child < size and self.heap[left_child] < self.heap[i]:
+                smallest = left_child
+
+            if right_child < size and self.heap[right_child] < self.heap[i]:
+                smallest = right_child
+
+            if smallest == i:
+                return 
+            
+            self.heap[i], self.heap[smallest] = self.heap[smallest], self.heap[i]
+            i = smallest
+
+heap = Solution()
+
+heap.initializeHeap()
+
+heap.insert(4)
+heap.insert(1)
+heap.insert(10)
+
+print(heap.getMin())
