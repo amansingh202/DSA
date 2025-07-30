@@ -34,19 +34,19 @@ class MedianFinder:
         if len(self.large) > len(self.small):
             return self.large[0]
         
-        return (self.small[0] + self.large[0])/2
+        return (-1 * self.small[0] + self.large[0])/2
     
 obj = MedianFinder()
 
-obj.addNum(17)
 obj.addNum(1)
+obj.addNum(2)
 
 print(obj.findMedian())
 
-obj.addNum(-3)
-obj.addNum(-5)
-obj.addNum(7)
-print(obj.findMedian())
+# obj.addNum(-3)
+# obj.addNum(-5)
+# obj.addNum(7)
+# print(obj.findMedian())
 
         
 
