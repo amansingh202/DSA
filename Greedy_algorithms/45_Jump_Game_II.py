@@ -1,9 +1,11 @@
 ## leetcode 45. Jump Game II
 
 
-## Brute force approach
+
 class Solution:
-    def jump(self, nums: list[int]) -> int:
+
+    ## Brute force approach
+    def jump_brute(self, nums: list[int]) -> int:
 
         n = len(nums)
 
@@ -19,11 +21,33 @@ class Solution:
             return minimum
         
         return jump2(0,0)
+    
+    ## most optimal approach
+
+    def jump_optimal(self, nums: list[int]) -> int:
+
+        l,r,jumps = 0, 0, 0
+
+        n = len(nums)
+
+        while r < (n-1):
+            farthest = 0
+
+            for i in range(l, r+1):
+                farthest = max(farthest, i + nums[i])
+
+            l = r+1
+            r = farthest
+            jumps += 1
+
+        return jumps
+    
+
 
 obj = Solution()
 
 nums = [2,3,1,1,4]
 
-print(obj.jump(nums))
+print(obj.jump_optimal(nums))
 
         
