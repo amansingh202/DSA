@@ -1,11 +1,15 @@
+## leetcode 56. Merge Intervals
+
 class Solution:
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:
+        intervals.sort(key = lambda x: x[0])
+        
         n = len(intervals)
 
         i = 0
         result = []
 
-        intervals.sort(key = lambda x: x[0])
+        
 
         while i < n:
             start, end = intervals[i]
@@ -22,7 +26,7 @@ class Solution:
     
 obj = Solution()
 
-intervals = [[1,3],[2,6],[8,10],[15,18]]
+intervals = [[1,4],[0,4]]
 
 print(obj.merge(intervals))
 
