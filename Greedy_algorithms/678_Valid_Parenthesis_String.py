@@ -1,5 +1,9 @@
+## 678. Valid Parenthesis String
+
 class Solution:
-    def checkValidString(self, s: str) -> bool:
+
+    ## Brute force approach
+    def checkValidString_recursion(self, s: str) -> bool:
         n = len(s)
 
         def is_valid(s, index, count):
@@ -20,8 +24,34 @@ class Solution:
             
         return is_valid(s, 0, 0)
     
+    def checkValidString_optimal(self, s: str) -> bool:
+        n = len(s)
+
+        min, max = 0, 0
+
+        for i in range(n):
+            if s[i] == '(':
+                min += 1
+                max += 1
+            elif s[i] == ')':
+                min -= 1
+                max -= 1
+
+            else:
+                min -= 1
+                max += 1
+
+            if min < 0:
+                min = 0
+
+            if max < 0:
+                return False
+            
+        return min == 0
+
+    
 obj = Solution()
 
-s = "(*)("
+s = "(*))"
 
-print(obj.checkValidString(s))
+print(obj.checkValidString_optimal(s))
