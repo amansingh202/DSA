@@ -1,4 +1,4 @@
-## 678. Valid Parenthesis String
+## leetcode 678. Valid Parenthesis String
 
 class Solution:
 
@@ -24,6 +24,7 @@ class Solution:
             
         return is_valid(s, 0, 0)
     
+    ## most optimal greedu approach
     def checkValidString_optimal(self, s: str) -> bool:
         n = len(s)
 
