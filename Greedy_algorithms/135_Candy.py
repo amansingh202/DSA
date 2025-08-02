@@ -1,6 +1,8 @@
 ## leetcode 135. Candy
 
 class Solution:
+
+    ## non optimal approach
     def candy(self, ratings: list[int]) -> int:
 
         n = len(ratings)
@@ -35,10 +37,49 @@ class Solution:
 
         return sum
     
+    ## optimal approach
+
+    def candy_optimal(self, ratings: list[int]) -> int:
+
+        sum = 1
+        i = 1
+
+        n = len(ratings)
+
+        while i < n:
+            if ratings[i] == ratings[i-1]:
+                sum += 1
+                i += 1
+                continue
+
+            ## up-slope ratings 
+            peak = 1 
+
+            while i < n and ratings[i] > ratings[i-1]:
+                peak += 1
+                sum += peak
+                i += 1
+
+            ## down-slope ratings
+            down = 1
+
+            while i < n and ratings[i] < ratings[i-1]:
+                sum += down
+                down += 1
+                i += 1
+
+            if down > peak:
+                sum += (down - peak)
+
+        return sum
+
+
+    
+    
 obj = Solution()
 
 ratings = [1,0,2]
 
-print(obj.candy(ratings))
+print(obj.candy_optimal(ratings))
 
         
