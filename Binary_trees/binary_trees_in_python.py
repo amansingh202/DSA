@@ -13,6 +13,8 @@ class BinaryTree:
             return self.preorder_print(tree.root, "")
         elif traversal_type == "in_order":
             return self.inorder_traversal(tree.root, "")
+        elif traversal_type == "post_order":
+            return self.postorder_traversal(tree.root, "")
 
     ## Tree structure
     # """                             1
@@ -44,6 +46,18 @@ class BinaryTree:
             traversal = self.inorder_traversal(start.right, traversal)
 
         return traversal
+    
+    ## post-order tree traversal code
+    def postorder_traversal(self, start, traversal):
+        """ right --> root --> left"""
+        """ 7--3--6--1--5--2--4"""
+
+        if start:
+            traversal = self.postorder_traversal(start.right, traversal)
+            traversal += str(start.value) + "--"
+            traversal = self.postorder_traversal(start.left, traversal)
+
+        return traversal
 
 
 
@@ -58,4 +72,6 @@ tree.root.right.right = Node(7)
 print(tree.print_tree("pre_order"))
 
 print(tree.print_tree("in_order"))
+
+print(tree.print_tree("post_order"))
 
