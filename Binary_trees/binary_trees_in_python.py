@@ -49,14 +49,14 @@ class BinaryTree:
     
     ## post-order tree traversal code
     def postorder_traversal(self, start, traversal):
-        """ right --> root --> left"""
-        """ 7--3--6--1--5--2--4"""
+        """ left --> right --> root"""
+        """ 4--5--2--6--7--3--1"""
 
         if start:
+            traversal = self.postorder_traversal(start.left, traversal)
             traversal = self.postorder_traversal(start.right, traversal)
             traversal += str(start.value) + "--"
-            traversal = self.postorder_traversal(start.left, traversal)
-
+            
         return traversal
 
 
