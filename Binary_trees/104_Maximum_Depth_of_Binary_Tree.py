@@ -11,9 +11,9 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    def maxDepth(self, root) -> list[list[int]]:
+    def maxDepth(self, root) -> int:
         if not root:
-            return None
+            return 0
 
         queue = deque([root])
 
