@@ -35,13 +35,19 @@ class Solution:
 
         return len(result)
     
+    def maxDepth_recursive(self, root) -> int:
+        if not root:
+            return 0
+        
+        return 1 + max(self.maxDepth_recursive(root.left), self.maxDepth_recursive(root.right))
+    
 root = TreeNode(3)
 root.left = TreeNode(9)
 root.right = TreeNode(20, TreeNode(15), TreeNode(7))
     
 obj = Solution()
 
-print(obj.maxDepth(root))
+print(obj.maxDepth_recursive(root))
 
 
         
