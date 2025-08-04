@@ -11,7 +11,7 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    def levelOrder(self, root) -> list[list[int]]:
+    def maxDepth(self, root) -> list[list[int]]:
         if not root:
             return None
 
@@ -41,7 +41,7 @@ root.right = TreeNode(20, TreeNode(15), TreeNode(7))
     
 obj = Solution()
 
-print(obj.levelOrder(root))
+print(obj.maxDepth(root))
 
 
         
