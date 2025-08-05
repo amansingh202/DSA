@@ -8,7 +8,7 @@ class TreeNode:
         self.right = right
 class Solution:
     def maxPathSum(self, root) -> int:
-        self.maximum = 0
+        self.maximum = float('-inf')
 
         def is_node(root):
             if not root:
