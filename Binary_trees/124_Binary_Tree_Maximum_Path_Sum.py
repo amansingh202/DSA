@@ -14,8 +14,8 @@ class Solution:
             if not root:
                 return 0
             
-            lh = is_node(root.left)
-            rh = is_node(root.right)
+            lh = max(0, is_node(root.left))
+            rh = max(0, is_node(root.right))
 
             self.maximum = max(self.maximum, root.val + lh + rh)
 
