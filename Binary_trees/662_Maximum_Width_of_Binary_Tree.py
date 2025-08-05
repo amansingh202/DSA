@@ -16,26 +16,33 @@ class Solution:
         
         max_width = 0
 
-        level_indices = []
 
         queue = deque([(root, 0)])
 
         while queue:
-            node, index = queue.popleft()
+            size = len(queue)
 
-            level_indices.append(index)
+            _, level_head_index = queue[0]
 
-            if node.left:
-                queue.append((node.left, 2*index))
+            for _ in range(size):
+                node, index = queue.popleft()
+                index = index - level_head_index
 
-            if node.right:
-                queue.append((node.right, 2*index + 1))
+                if node.left:
+                    queue.append((node.left, 2*index))
 
-            width = level_indices[-1] - level_indices[0] + 1
+                if node.right:
+                    queue.append((node.right, 2*index + 1))
+
+            if queue:
+                width = queue[-1][1] - queue[0][1] + 1
+            else:
+                width = 1
 
             max_width = max(max_width, width)
 
         return max_width
+            
     
 obj = Solution()
 root = TreeNode(1)
