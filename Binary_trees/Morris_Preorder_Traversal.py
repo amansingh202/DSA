@@ -27,7 +27,7 @@ class Solution:
                 while(prev.right and prev.right != current):
                     prev = prev.right
 
-                if not prev.right:
+                if prev.right is None:
                     prev.right = current
                     result.append(current.data)
                     current = current.left
