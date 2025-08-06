@@ -59,6 +59,19 @@ class Codec:
         
 
 # Your Codec object will be instantiated and called as such:
-# ser = Codec()
-# deser = Codec()
-# ans = deser.deserialize(ser.serialize(root))
+
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.right.left = TreeNode(4)
+root.right.right = TreeNode(5)
+
+ser = Codec()
+deser = Codec()
+data = ser.serialize(root)
+print("serialized : ", data)
+
+print("de-serialized : ", deser.deserialize(data))
+
+
