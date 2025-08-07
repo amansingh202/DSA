@@ -20,6 +20,16 @@ class Solution:
 
         return root.val
     
+    def find_maximum(self, root):
+
+        if not root:
+            return None
+        
+        while root.right:
+            root = root.right
+
+        return root.val
+    
 root = TreeNode(8)
 root.left = TreeNode(3)
 root.right = TreeNode(10)
@@ -32,4 +42,7 @@ root.right.right.left = TreeNode(13)
 
 obj = Solution()
 
-print(obj.find_minimum(root))
+print("Minimum is : ", obj.find_minimum(root))
+
+print("Maximu is : ", obj.find_maximum(root))
+
