@@ -1,6 +1,6 @@
-## leetcode 230. Kth Smallest Element in a BST
+## leetcode 230. Kth Smallest Element in a BST 
 
-from typing import Optional
+from typing import Optional, List
 
 # Definition for a binary tree node.
 class TreeNode:
