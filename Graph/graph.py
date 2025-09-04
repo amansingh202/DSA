@@ -33,6 +33,7 @@ for u, v in A:
 
 seen = set()
 
+#3 recursive depth first search
 def dfs_recursive(node):
     print(node)
 
@@ -44,4 +45,17 @@ def dfs_recursive(node):
 
 source  = 0
 seen.add(source)
-dfs_recursive(source)
+# dfs_recursive(source)
+
+
+## Iterative depth first search with stack
+stack = [source]
+
+while stack:
+    node = stack.pop()
+    print(node)
+
+    for neighbour_node in D[node]:
+        if neighbour_node not in seen:
+            seen.add(neighbour_node)
+            stack.append(neighbour_node)
