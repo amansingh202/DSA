@@ -49,13 +49,32 @@ seen.add(source)
 
 
 ## Iterative depth first search with stack
-stack = [source]
+# stack = [source]
 
-while stack:
-    node = stack.pop()
+# while stack:
+#     node = stack.pop()
+#     print(node)
+
+#     for neighbour_node in D[node]:
+#         if neighbour_node not in seen:
+#             seen.add(neighbour_node)
+#             stack.append(neighbour_node)
+
+# BFS in Graph using deque
+
+from collections import deque
+
+visited = set()
+initial_point = 0
+
+q = deque()
+q.append(initial_point)
+
+while q:
+    node = q.popleft()
     print(node)
 
     for neighbour_node in D[node]:
-        if neighbour_node not in seen:
-            seen.add(neighbour_node)
-            stack.append(neighbour_node)
+        if neighbour_node not in visited:
+            visited.add(neighbour_node)
+            q.append(neighbour_node)
