@@ -1,0 +1,49 @@
+from collections import defaultdict
+class Solution:
+    def findNumberOfComponent(self, V, edges):
+
+      graph = defaultdict(list)
+
+      for a, b in edges:
+        graph[a].append(b)
+        graph[b].append(a)
+
+      visited = [False]*V
+
+      def dfs(node):
+        stack = [node]
+
+        while stack:
+          u = stack.pop()
+
+          if not visited[u]:
+            visited[u] = True
+
+            for neighbour in graph[u]:
+              if not visited[neighbour]:
+                stack.append(neighbour)
+
+      components = 0
+
+      for i in range(V):
+        if not visited[i]:
+          components += 1
+          dfs(i)
+
+      return components
+
+
+
+sol = Solution()
+
+print(sol.findNumberOfComponent(7, [[0,1],[1,2],[2,3],[4,5]])) # ans:3
+print(sol.findNumberOfComponent(5, []))  # ans : 5
+
+V = 11
+edges = [
+    [0, 1], [0, 3], [1, 2], [2, 4], [3, 4],  # Component 1
+    [5, 6], [6, 7], [5, 7],                  # Component 2
+    [8, 9]                                   # Component 3
+    # 10 is isolated
+]
+print(sol.findNumberOfComponent(V, edges))  # Expected output: 4
